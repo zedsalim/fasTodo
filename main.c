@@ -58,7 +58,6 @@ void addTodo(char buffer[]) {
 
 void printTodo(char buffer[]) {
   if (checkFile() == 0) {
-
     f_read = fopen("todo.txt", "r");
     if (f_read == NULL) {
       fprintf(stderr, "Error opening file\n");
@@ -69,7 +68,6 @@ void printTodo(char buffer[]) {
       i++;
       printf("%2d - %s", i, buffer);
     }
-
     fclose(f_read);
   } else {
     printf("Todo list does not exist\n");
@@ -177,8 +175,10 @@ int main(int argc, char *argv[]) {
     } else if (strcmp(argv[1], "-p") == 0) {
       printTodo(buffer);
     } else if (strcmp(argv[1], "-m") == 0) {
+      printTodo(buffer);
       markTodoByLineNumber(buffer);
     } else if (strcmp(argv[1], "-u") == 0) {
+      printTodo(buffer);
       updateTodoByLineNumber(buffer);
     } else if (strcmp(argv[1], "-c") == 0) {
       clearTodoList();
@@ -192,11 +192,5 @@ int main(int argc, char *argv[]) {
     displayHelp(argv);
     exit(1);
   }
-
-  // addTodo(buffer);
-  // printTodo(buffer);
-  // markTodoByLineNumber(buffer);
-  // updateTodoByLineNumber(buffer);
-
   return 0;
 }
