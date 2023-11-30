@@ -46,6 +46,7 @@ int countTodo() {
   while (fgets(tmp_buffer, MAX_STRING_SIZE, tmp_f_read) != NULL) {
     i++;
   }
+  fclose(tmp_f_read);
   return i;
 }
 
@@ -60,7 +61,7 @@ void markTodoByLineNumber(char buffer[]) {
   char org_file_name[] = "todo.txt";
   char tmp_file_name[] = "tmp_todo.txt";
   int line_to_delete = 0;
-  printf("Enter the number line of your completed TODO: ");
+  printf("Which todo did you finish? (enter the line number): ");
   if (scanf("%d", &line_to_delete) != 1 ||
       (line_to_delete < 1 || line_to_delete > todo_list_size)) {
     printf("Invalid input. Try again.\n");
@@ -79,11 +80,50 @@ void markTodoByLineNumber(char buffer[]) {
   }
 }
 
+void updateTodoByLineNumber(char buffer[]) {
+  f_read = fopen("todo.txt", "r");
+  f_tmp = fopen("tmp_todo.txt", "w");
+  if (f_read == NULL || f_tmp == NULL) {
+    fprintf(stderr, "Error opening file\n");
+    exit(1);
+  }
+  int todo_list_size = countTodo();
+  char org_file_name[] = "todo.txt";
+  char tmp_file_name[] = "tmp_todo.txt";
+  int line_to_update = 0;
+  printf("Which todo you want to update? (enter the line number): ");
+  if (scanf("%d", &line_to_update) != 1 ||
+      (line_to_update < 1 || line_to_update > todo_list_size)) {
+    printf("Invalid input. Try again.\n");
+  } else {
+    // int c;
+    // while ((c = getchar()) != '\n' && c != EOF)
+    // ;
+    getchar();
+    int i = 0;
+    while (fgets(buffer, MAX_STRING_SIZE, f_read) != NULL) {
+      i++;
+      if (i == line_to_update) {
+        printf("update your TODO: ");
+        fgets(buffer, MAX_STRING_SIZE, stdin);
+        fputs(buffer, f_tmp);
+      } else {
+        fputs(buffer, f_tmp);
+      }
+    }
+    fclose(f_read);
+    fclose(f_tmp);
+    remove(org_file_name);
+    rename(tmp_file_name, org_file_name);
+  }
+}
+
 int main() {
   char buffer[MAX_STRING_SIZE];
   // addTodo(buffer);
   printTodo(buffer);
   markTodoByLineNumber(buffer);
+  updateTodoByLineNumber(buffer);
 
   return 0;
 }
