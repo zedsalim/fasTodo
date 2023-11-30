@@ -96,9 +96,6 @@ void updateTodoByLineNumber(char buffer[]) {
       (line_to_update < 1 || line_to_update > todo_list_size)) {
     printf("Invalid input. Try again.\n");
   } else {
-    // int c;
-    // while ((c = getchar()) != '\n' && c != EOF)
-    // ;
     getchar();
     int i = 0;
     while (fgets(buffer, MAX_STRING_SIZE, f_read) != NULL) {
@@ -116,6 +113,14 @@ void updateTodoByLineNumber(char buffer[]) {
     remove(org_file_name);
     rename(tmp_file_name, org_file_name);
   }
+}
+
+void clearTodoList() {
+  char file_name[] = "todo.txt";
+  if (remove(file_name) == 0)
+    printf("Todo list cleared\n");
+  else
+    printf("Error clearing the todo list\n");
 }
 
 int main() {
