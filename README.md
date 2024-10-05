@@ -1,5 +1,12 @@
 # Fast Todo
 
+| Demo 1 | Demo 2 | Demo 3 |
+|-------|-------|-------|
+| ![Demo 1](https://salimzaidi.site/media/images/uploads/81a3e9fa-13ed-4b21-bedb-f3b388e55d84.webp) | ![Demo 2](https://salimzaidi.site/media/images/uploads/53d748df-4448-4cb2-8bcb-bf843bf3cb3c.webp) | ![Demo 3](https://salimzaidi.site/media/images/uploads/f4e500bf-8960-4c4a-a1fb-d3217c73eb18.webp) |
+| Demo 4 | Demo 5 | Demo 6 |
+| ![Demo 4](https://salimzaidi.site/media/images/uploads/fffad6fb-ebc2-4f54-9079-5a06044edc33.webp) | ![Demo 5](https://salimzaidi.site/media/images/uploads/4bc9bc7b-222a-4b9b-83ba-0de564f2ef0e.webp) | ![Demo 6](https://salimzaidi.site/media/images/uploads/9afaecba-8425-4cb3-b5db-06704c6ac4b5.webp) |
+
+
 Fast Todo is a simple command-line TODO list manager written in C. This program allows users to add, view, update, mark as finished, and clear tasks from their TODO list efficiently.
 
 ## Features
